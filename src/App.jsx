@@ -12,15 +12,25 @@ useEffect(()=>{
 }) 
 
 const addTask = (task)=> {
-  setTasks([...tasks,task]);
+  setTasks([...tasks, task]);
 }
 
+const updateTask = (updatedTask, index)=> {
+  const newTask = [...tasks];
+  newTask[index] = updatedTask;
+  setTasks(newTask);
+}
+
+const deleteTask = (index)=> {
+  setTasks(tasks.filter((_, i) => i !== index));
+};
   return (
     <div>
       <h1>Taskify</h1>
       <p>Your friendly ask Manager</p>
       <TaskForm addTask={addTask}/>
-      <TaskList tasks={tasks} updateTask={updateTask} delete={deleteTask}/>
+      <TaskList tasks={tasks} updateTask={updateTask} 
+      deleteTask={deleteTask}/>
       <ProgressTracker />
       <button>Clear all Task</button>
     </div>

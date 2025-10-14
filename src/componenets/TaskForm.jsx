@@ -19,8 +19,7 @@ export default function TaskForm({addTask}) {
           <div id='inp'>
               <input type="text" placeholder='Enter the task' value={task}
               onChange={(e) => setTask(e.target.value)}/>
-              <span><button type='submit'>Add task</button></span>
-              
+              <span><button type='submit'>Add task</button></span> 
           </div>
 
           <div id='btn'>
