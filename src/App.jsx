@@ -22,17 +22,24 @@ const updateTask = (updatedTask, index)=> {
 }
 
 const deleteTask = (index)=> {
-  setTasks(tasks.filter((_, i) => i !== index));
+  setTasks(tasks.filter((_, i) => i != index));
+};
+
+const clearTasks = ()=> {
+  setTasks([]);
 };
   return (
-    <div>
-      <h1>Taskify</h1>
-      <p>Your friendly ask Manager</p>
+    <div className='App'>
+      <header>
+        <h1 className='title'>Taskify</h1>
+      <p className='tagline'>Your friendly ask Manager</p>
+      </header>
+      
       <TaskForm addTask={addTask}/>
       <TaskList tasks={tasks} updateTask={updateTask} 
       deleteTask={deleteTask}/>
-      <ProgressTracker />
-      <button>Clear all Task</button>
+      <ProgressTracker tasks={tasks}/>
+      {tasks.length>0 && (<button onClick={clearTasks} className='clear-btn'>Clear all Task</button>)}
     </div>
   )
 }
